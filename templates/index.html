@@ -13,21 +13,24 @@
     <a href="{{ url_for('add') }}">Add new post</a>
   </p>
 
-{% for post in posts %}
-  <div class="post">
-    <h2>{{ post.title }}</h2>
-    <p><em>Written by {{ post.author }}</em></p>
-    <p>{{ post.content }}</p>
+  {% for post in posts %}
+    <div class="post">
+      <h2>{{ post.title }}</h2>
+      <p><em>Written by {{ post.author }}</em></p>
+      <p>{{ post.content }}</p>
 
-    <p>
-      <a href="{{ url_for('delete', post_id=post.id) }}">Delete</a>
-    </p>
-  </div>
-{% endfor %}
+      <p>
+        <a href="{{ url_for('update', post_id=post.id) }}">Edit</a>
+        |
+        <a href="{{ url_for('delete', post_id=post.id) }}">Delete</a>
+      </p>
+    </div>
+  {% endfor %}
 
   {% if posts|length == 0 %}
     <p style="text-align:center;">No posts yet.</p>
   {% endif %}
 </body>
 </html>
+
 
